@@ -1,11 +1,4 @@
 const CreateData = (): JSX.Element => {
-  const sampleTitle = [
-    'Почему мы пере- оцениваем себя?',
-    'Почему мы неправильно оцениваем себя?',
-    'Почему мы принимаем неправильные решения?',
-    'Почему мы ничего не понимаем?',
-  ];
-
   interface cognitiveElem {
     title: string;
     shortDescr: string;
