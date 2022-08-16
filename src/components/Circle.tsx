@@ -1,4 +1,11 @@
-import { DetailedHTMLProps, FC, Fragment, HTMLAttributes } from 'react';
+import {
+  DetailedHTMLProps,
+  FC,
+  Fragment,
+  HTMLAttributes,
+  useContext,
+} from 'react';
+import { InfoContext } from '../context/InfoContext';
 import { IGroup, IElement } from '../models/IDatabase';
 
 interface CircleProps
@@ -8,6 +15,8 @@ interface CircleProps
 }
 
 const Circle: FC<CircleProps> = ({ data, colorData, ...props }) => {
+  const { changeText } = useContext(InfoContext);
+
   const createList = (list: IElement[]): JSX.Element => {
     const dividerClass =
       'h-48 w-2 absolute bg-white top-0 left-1/2 origin-bottom z-10';
@@ -52,7 +61,8 @@ const Circle: FC<CircleProps> = ({ data, colorData, ...props }) => {
                   className={`
                   rounded transition-all cursor-pointer scale-90 opacity-75 
                   hover:scale-105 hover:opacity-100
-                `}
+                  `}
+                  onClick={() => changeText(item)}
                 >
                   {item.title}
                 </div>
