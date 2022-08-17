@@ -2,6 +2,8 @@ import { useContext } from 'react';
 import Circle from './components/Circle';
 import { InfoContext } from './context/InfoContext';
 import dataJson from './data.json';
+import Title from './components/Title';
+import Description from './components/Description';
 
 const colors = [
   ['bg-slate-700', 'text-white'],
@@ -11,15 +13,8 @@ const colors = [
 ];
 
 function App() {
-  const { title, text } = useContext(InfoContext);
-
-  const Description = () => (
-    <>
-      {text.split(/\n/).map((item) => (
-        <p className="py-2">{item}</p>
-      ))}
-    </>
-  );
+  const { title, text }: { title: string; text: string } =
+    useContext(InfoContext);
 
   return (
     <div className="App">
@@ -40,10 +35,11 @@ function App() {
           ))}
         </div>
         <div className="max-w-3xl mx-auto text-slate-800 py-4">
-          <h2 className="text-3xl font-bold text-center py-8">{title}</h2>
-          <div className="h-96 overflow-y-auto px-2">
-            <Description />
-          </div>
+          <Title title={title} />
+          <Description
+            descr={text}
+            className="h-96 overflow-y-auto px-2 indent-4"
+          />
         </div>
       </div>
     </div>
